@@ -51,6 +51,7 @@ pieza BIT
 --detalles de la requi
 CREATE TABLE detalle_requisicion(
 cve_detalle_requisicion INT IDENTITY(1,1) PRIMARY KEY,
+cve_requisicion INT FOREIGN KEY REFERENCES requisicion(cve_requisicion),
 cve_concepto INT FOREIGN KEY REFERENCES concepto_pago(cve_concepto_pago),
 cantidad INT NOT NULL,
 precio FLOAT NOT NULL,
@@ -88,11 +89,13 @@ activo BIT
 --Si es persona el proveedor
 CREATE TABLE proveedor_persona(
 cve_proveedor_persona INT IDENTITY(1,1) PRIMARY KEY,
+cve_proveedor INT FOREIGN KEY REFERENCES proveedor(cve_proveedor),
 cve_persona INT FOREIGN KEY REFERENCES persona(cve_persona)
 )
 --Si el proveedor es empresa
 CREATE TABLE proveedor_empresa(
 cve_proveedor_persona INT IDENTITY(1,1) PRIMARY KEY,
+cve_proveedor INT FOREIGN KEY REFERENCES proveedor(cve_proveedor),
 cve_empresa INT FOREIGN KEY REFERENCES empresa(cve_empresa)
 )
 
